@@ -2,7 +2,7 @@
     <head>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>    
 <style>
-  
+
   /* First EOT formats for older browser support */
   @font-face {
     font-family: Sero;
@@ -32,7 +32,7 @@
     font-weight: normal;
     font-style: normal;
   }
-  
+  body { width:900px; font-family:sero;}  
   a{color: #3f413c;text-decoration:none;}
 
   #canvas{
@@ -78,6 +78,7 @@
       text-align: center;
       text-transform: uppercase;
       width: 22%;
+      height:50px;
   }
   #canvas .tabs li.active,#canvas .tabs li:hover{
     background:#666763; 
@@ -95,7 +96,7 @@
     box-sizing: border-box;
     display: inline-block;
       float: left;
-      padding: 43px 0;
+      padding: 30px 0;
       text-align: center;
       width: 50%;
   }
@@ -220,15 +221,19 @@
 <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut bibendum vulputate tincidunt. Etiam ut arcu metus. Aenean hendrerit felis et diam pharetra, non eleifend diam fermentum. Pellentesque eget aliquam orci, nec tempus arcu. Aenean condimentum ligula eget tortor cursus ullamcorper. Duis sit amet pharetra sapien, quis sagittis erat. Duis tempor turpis a consectetur varius. Morbi nec orci suscipit risus vulputate condimentum.</p>
 
 <p>Quisque maximus, nunc gravida tristique dignissim, dui risus tristique metus, vel aliquam ex augue id diam. Etiam interdum, ante at gravida consequat, magna nunc sodales felis, a lobortis neque nisi ut sem. Mauris sed tempor justo. Sed auctor felis vitae felis ultricies sagittis. Quisque rutrum vehicula maximus. Maecenas et lectus mollis, malesuada magna eget, venenatis lorem. Praesent accumsan justo eu mattis commodo. Aenean placerat risus eget mi molestie consequat.</p>
+    
+<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut bibendum vulputate tincidunt. Etiam ut arcu metus. Aenean hendrerit felis et diam pharetra, non eleifend diam fermentum. Pellentesque eget aliquam orci, nec tempus arcu. Aenean condimentum ligula eget tortor cursus ullamcorper. Duis sit amet pharetra sapien, quis sagittis erat. Duis tempor turpis a consectetur varius. Morbi nec orci suscipit risus vulputate condimentum.</p>
+
+<p>Quisque maximus, nunc gravida tristique dignissim, dui risus tristique metus, vel aliquam ex augue id diam. Etiam interdum, ante at gravida consequat, magna nunc sodales felis, a lobortis neque nisi ut sem. Mauris sed tempor justo. Sed auctor felis vitae felis ultricies sagittis. Quisque rutrum vehicula maximus. Maecenas et lectus mollis, malesuada magna eget, venenatis lorem. Praesent accumsan justo eu mattis commodo. Aenean placerat risus eget mi molestie consequat.</p>    
 <div id="canvas">
-    <h1>Who are our Employees?</h1>
+    <h1>Our Employees</h1>
     <ul class="tabs clearfix">
-        <li class="tab-1 active"><a href="javascript:toggleTab(1);">Full-Time Employees</a></li>
-        <li class="tab-2" style="width:32%;"><a href="javascript:toggleTab(2);">At Manager Level or Above</a></li>
-        <li class="tab-3"><a href="javascript:toggleTab(3);">Leadership Team</a></li>
-        <li class="tab-4"><a href="javascript:toggleTab(4);">Board of Directors</a></li>
+        <li class="tab-1 active"><a href="javascript:toggleTab(1);">Full-Time<br />Employees</a></li>
+        <li class="tab-2" style="width:32%;"><a href="javascript:toggleTab(2);">At Manager Level<br />or Above</a></li>
+        <li class="tab-3"><a href="javascript:toggleTab(3);">Leadership<br />Team</a></li>
+        <li class="tab-4"><a href="javascript:toggleTab(4);">Board of<br />Directors</a></li>
     </ul>
-    <div class="clearfix" id="key"><span style="padding-left:150px;"><i class="blue-square">&nbsp;</i>2014</span> <span style="padding-right:150px;"><i class="grey-square">&nbsp;</i>2013</span>
+    <div class="clearfix" id="key"><span><i class="blue-square">&nbsp;</i>2014</span> <span style="padding-right:150px;"><i class="grey-square">&nbsp;</i>2013</span>
     </div>
     <div id="graph">
         <!-- G1 -->
