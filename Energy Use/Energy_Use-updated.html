@@ -1,0 +1,483 @@
+
+    <style>
+
+  /* First EOT formats for older browser support */
+  @font-face {
+    font-family: Sero;
+    src: url('../web-fonts/sero/SeroWebPro-Black.eot#hunter');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Sero;
+    src: url('../web-fonts/sero/SeroWebPro-Light.eot#hunter');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  /* Then woff for those that support it */
+  @font-face {
+    font-family: Sero;
+    src: url("../web-fonts/sero/SeroWebPro-Black.woff#hunter") format("woff");
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Sero;
+    src: url("../web-fonts/sero/SeroWebPro-Light.woff#hunter") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  a{color: #3E403B ;text-decoration:none;}/*#3f413c*/
+
+  
+
+  #canvas{
+    font-family: 'sero',arial,adelle;
+    color: #3E403B;
+    /*background-color: rgba(255,0,0,0.1);*/
+    background-attachment: scroll;
+      background-image: 
+      url("energy-canvas.png");
+      background-position: center 179px;
+      background-repeat: no-repeat;
+      height: 900px;
+      width: 700px;
+      margin-top: 40px;
+  }
+  #canvas h1{font-family: 'sero',arial,adelle;font-size: 3em;font-weight: bolder;text-transform: capitalize;
+    width: 690px; margin: 0 auto 30px ;   
+  }
+
+  #graph{position: relative;}
+
+  [class*='-square'],[class^='-square']{
+    display: inline-block;
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+  }
+  .blue-square{background:#4DBEEF;}
+  .grey-square{background:#B4B4B3;}
+
+  #canvas .tabs{
+    font-family: 'sero',arial,adelle;
+    font-size: 1.25em;
+    padding: 0;
+    margin: 0 auto;
+    width: 690px;
+  }
+  #canvas .tabs li{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+      background: #E2E2E1;
+      float: left;
+      font-size: 0.75em;
+      list-style-type: none;
+      margin-right: 0.67%;
+      text-align: center;
+      text-transform: uppercase;
+      width: 32.33%;
+  }
+  #canvas .tabs li.active,#canvas .tabs li:hover{
+    background:#666763; 
+  }
+  #canvas .tabs li:hover a,#canvas .tabs li.active a {color: #ffffff;}
+  
+  #canvas .tabs li a{
+    display: block;
+    padding: 10px 0;
+    color: #3f413c;
+  }
+  #key {padding: 20px 10px 0;}
+  #key span{display:block;text-align: right;}
+
+  [class*='gd-'],[class^='gd-']{
+    /*background-color: rgba(255, 255, 0, 0.1);*/
+      float: left;
+      height: 410px;
+      margin-right: 10px;
+      margin-top: 14px;
+      width: 80px;
+  }
+  #graph-2 [class*='gd-'], #graph-2 [class^='gd-']{
+    width: 40%;
+    margin-right: 0;
+  }
+  #graph-3 [class*='gd-'], #graph-3 [class^='gd-']{
+    width: 20%;
+    margin-right: 0;
+  }
+
+  .percent{
+      float: left;
+      font-family: 'sero',arial,adelle;
+      font-size: 15px;
+      margin-top: 10px;
+      text-align: center;
+      width: 100%;
+  }
+  .bar {
+    position: relative;
+      float: left;
+      height: 100%;
+      width: 30px;
+      margin-right: 10px;
+  }
+  .bar:last-child{margin-right: 0;}
+  .ind {
+    position: absolute;
+    bottom: 0;
+      display: block;
+      height: 0;
+      width: 100%;
+      -webkit-transition: height 2s ease;
+      -moz-transition: height 2s ease;
+      -o-transition: height 2s ease;
+      -ms-transition: height 2s ease;
+      transition: height 2s ease;
+  }
+
+  .graph-numbers {
+    float: left;
+      height: 440px;
+      /*margin-top: 29px;*/
+      margin-right: 45px;
+      width: 90px;
+  }
+  .graph-numbers span{
+    display: block;
+      margin-right: 7px;
+      text-align: right;
+      width: 90px;
+      margin-top: 45px;
+  }
+  .graph-numbers span:first-child{margin-top: 0;}
+  .graph-numbers span:last-child{margin-top: 55px;}
+
+  .totals{
+    float: left;
+    width: 100%;
+    font-family: 'sero',arial,adelle;
+    font-size: 30px;
+    border-top: 2px solid #E2E2E1;
+      margin: 40px auto 0;
+      padding-top: 10px;
+  }
+  .totals span {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+      float: left;
+      width: 50%;
+  }
+  .totals strong,.totals small{font-family: 'sero',arial,adelle; font-weight: bold;}
+  .totals strong{font-size: 60px;line-height: 70px;}
+  #graph-3 .totals strong{font-size: 50px;}
+  .totals .left{text-align: left;padding-left:30px;}
+  .totals .right{text-align: right;padding-right:30px;}
+
+  [id*='scope-'],[id^='scope-']{
+    position: absolute;
+    top: 250px;
+    display: block;
+    height: 160px;
+    text-align: center;
+    color: #939491;
+  }
+  #scope-1{ left: 150px; width: 390px; top:338px}
+  #scope-2{ left: 558px; width: 130px; top:240px;}
+  #scope-3{ left: 220px; width: 450px; top:150px;}
+  #scope-4{ left: 130px; width: 80px; top:-40px; }        
+  [id*='scope-'] .outline,[id^='scope-'] .outline{
+    display: block;
+    position: relative;
+    height: 140px;
+    margin-top: 0px;
+    border: 1px solid #E2E2E1;
+    border-bottom: none;
+  }
+  [id*='scope-'] .outline:after,[id^='scope-'] .outline:after{
+    position: absolute;
+    content: '';
+    top: 0px;
+    left: 50%;
+    width: 0px;
+    height: 30px;
+    background-color: #E2E2E1;
+  }
+  #scope-1 .outline{ height:70px;}
+  #scope-2 .outline{ }
+  #scope-3 .outline{height:258px; }
+  #scope-4 .outline{ height:415px;} 
+        .scope-label{font-size:10px;font-weight:bold;}
+  .blue{background:#4DBEEF;}
+  .grey{background:#B4B4B3;}
+  .blue-text{color:#4DBEEF;}
+  .grey-text{color:#B4B4B3;}
+  /* clearfix */
+  .clearfix:before,.clearfix:after { content: ""; display: table; }
+  .clearfix:after { clear: both; }
+
+  #stats {
+    left: 200px;
+    top: 50px;
+    position: absolute;
+    width: 200px;
+    display: none;
+      z-index: 0;
+  }
+  #statsNew {
+    left: 370px;
+    top: -20px;
+    position: absolute;
+    width: 180px;
+    display: none;
+      z-index:1;
+  }        
+</style>
+
+<script>
+  jQuery(document).scroll(function(){
+    scrollIt();
+  });
+  function scrollIt(){
+    var windowPos = jQuery(window).scrollTop();
+    var canvasPos = jQuery('#canvas').position().top;
+    canvasPos = Math.round(canvasPos);
+    var animated = 0;
+    if( windowPos >= ( canvasPos - 100) ){
+      if( animated === 0 ){
+        jQuery('.ind').each(function(){jQuery(this).css('height',0);});
+        animateIt();
+      }
+      var animated = 1;
+    }
+  }
+  function animateIt(){
+    jQuery('.ind').each(function(){// for each indicator bar
+      var height = jQuery(this).attr('data-percent');//get the assigned percentage
+      jQuery(this).css('height',height+'%');//apply the assigned percentage to indicators height
+        jQuery('#stats').fadeIn('slow',function(){jQuery('#statsNew').fadeIn('slow')});
+    });
+  }
+  function toggleTab(x){
+    jQuery('.ind').css('height',0); //reset the thermometers
+    jQuery('.tabs li').removeClass('active');
+    jQuery( '.tabs li.tab-'+x ).addClass('active');
+    jQuery('.graph').fadeOut();
+    jQuery('#graph-'+x).delay(900).fadeIn('slow');
+   
+    setTimeout(animateIt, 905);
+
+  }
+</script>
+          
+<div id="canvas">
+    <h1>Energy Use</h1>
+    <ul class="tabs clearfix">
+      <li class="tab-3 active">
+        <a href="javascript:toggleTab(3);">Carbon Emissions</a>
+      </li>
+      <li class="tab-1">
+        <a href="javascript:toggleTab(1);">Energy by Source</a>
+      </li>
+      <li class="tab-2">
+        <a href="javascript:toggleTab(2);">Energy by Scope</a>
+      </li>
+    </ul>
+    <div class="clearfix" id="key">
+      <span><i class="blue-square">&nbsp;</i>2014</span> <span><i class="grey-square">&nbsp;</i>2013</span> 
+    </div>
+    <div id="graph">
+        <!-- G1 -->
+        <div class="graph clearfix" id="graph-1" style="display:none;">
+            <div class="graph-numbers clearfix">
+              <span>30000</span>
+              <span>25000</span>
+              <span>20000</span>
+              <span>15000</span>
+              <span>10000</span>
+              <span>5000</span>
+              <span>MWh 0</span>
+            </div>
+            <span id="scope-3">
+                <span class="scope-label">Scope 1 - Primary Energy Consumption</span><span class="outline">&nbsp;</span>
+            </span>
+            <span id="scope-4">
+                <span class="scope-label">Scope 2 - Secondary Energy Purchase</span><span class="outline">&nbsp;</span>
+            </span>            
+            <div class="gd-1">
+              <span class="bar">
+                <span class="ind blue" data-percent="99">&nbsp;</span>
+              </span>
+              <span class="bar">
+                <span class="ind grey" data-percent="80">&nbsp;</span>
+              </span>
+              <span class="percent">
+                Electricity
+              </span>
+            </div>
+            <div class="gd-2">
+              <span class="bar">
+                <span class="ind blue" data-percent="50">&nbsp;</span>
+              </span>
+              <span class="bar">
+                <span class="ind grey" data-percent="60">&nbsp;</span>
+              </span>
+              <span class="percent">Natural Gas</span>
+            </div>
+            <div class="gd-3">
+              <span class="bar">
+                <span class="ind blue" data-percent="13">&nbsp;</span>
+              </span>
+              <span class="bar">
+                <span class="ind grey" data-percent="11">&nbsp;</span>
+              </span>
+              <span class="percent">Gasoline</span>
+            </div>
+            <div class="gd-4">
+              <span class="bar">
+                <span class="ind grey" data-percent="5">&nbsp;</span>
+              </span>
+              <span class="bar">
+                <span class="ind blue" data-percent="4">&nbsp;</span>
+              </span>
+              <span class="percent">LP Gas</span>
+            </div>
+            <div class="gd-5">
+              <span class="bar">
+                <span class="ind blue" data-percent="4">&nbsp;</span>
+              </span>
+              <span class="bar">
+                <span class="ind grey" data-percent="5">&nbsp;</span>
+              </span>
+              <span class="percent">Propane</span>
+            </div>
+            <div class="gd-6">
+              <span class="bar">
+                <span class="ind blue" data-percent="3">&nbsp;</span>
+              </span>
+              <span class="bar">
+                <span class="ind grey" data-percent="2">&nbsp;</span>
+              </span>
+              <span class="percent">Solar</span>
+            </div>
+            <div class="totals clearfix">
+              <span class="left twenty12">2014 TOTAL<br /><strong class="blue-text">51,072</strong><small class="blue-text"> MWh</small>
+              </span>
+              <span class="right twenty13"> 2013 TOTAL<br /><strong class="grey-text">47,793</strong><small class="grey-text"> MWh</small></span>
+            </div>
+        </div>
+        <!-- /#graph-1 -->
+        <!-- G2 -->
+        <div class="graph clearfix" id="graph-2" style="display:none;">
+            <div class="graph-numbers clearfix">
+              <span>30000</span>
+              <span>25000</span>
+              <span>20000</span>
+              <span>15000</span>
+              <span>10000</span>
+              <span>5000</span>
+              <span>MWh 0</span>
+            </div>
+            <div class="gd-1">
+              <span class="bar" style="margin-left:100px;">
+                <span class="ind blue" data-percent="80">&nbsp;</span>
+          </span> <span class="bar">
+            <span class="ind grey" data-percent="80">&nbsp;</span>
+          </span> <span class="percent">Scope 1-Primary Energy Consumption</span>
+            </div>
+            <div class="gd-2">
+              <span class="bar" style="margin-left:100px;">
+                <span class="ind blue" data-percent="99">&nbsp;</span>
+          </span> <span class="bar">
+            <span class="ind grey" data-percent="77">&nbsp;</span>
+          </span> <span class="percent">Scope 2-Secondary Energy Purchase</span>
+            </div>
+            <div class="totals clearfix">
+              <span class="left twenty12">2014 TOTAL<br />
+                <strong class="blue-text">51,072</strong>
+            <small class="blue-text"> MWh</small> </span> <span class="right twenty13"> 2013 TOTAL<br />
+            <strong class="grey-text">47,793</strong>
+            <small class="grey-text"> MWh</small> </span>
+            </div>
+        </div>
+        <!-- /#graph-2 -->
+        <!-- G3 -->
+        <div class="graph clearfix" id="graph-3">
+            <div class="graph-numbers clearfix">
+              <span>30000</span>
+              <span>25000</span>
+              <span>20000</span>
+              <span>15000</span>
+              <span>10000</span>
+              <span>5000</span>
+              <span>mtons 0</span>
+            </div>
+            <span id="scope-1">
+              <span class="scope-label">Scope 1 - Emissions from Primary Energy Consumption</span><span class="outline">&nbsp;</span>
+            </span>
+            <span id="scope-2">
+              <span class="scope-label">Scope 2 - Emissions from<br/>Secondary Energy Purchase</span><span class="outline">&nbsp;</span>
+            </span>
+            <div class="gd-1">
+              <span class="bar" style="margin-left:34px;">
+                <span class="ind blue" data-percent="6">&nbsp;</span>
+              </span>
+              <span class="bar">
+                <span class="ind grey" data-percent="5">&nbsp;</span>
+              </span>
+              <span class="percent">Vehicles &amp;<br />Equipment</span>
+            </div>
+            <div class="gd-2">
+              <span class="bar" style="margin-left:34px;">
+                <span class="ind grey" data-percent="11">&nbsp;</span>
+              </span>
+              <span class="bar">
+                <span class="ind blue" data-percent="13">&nbsp;</span>
+              </span>
+              <span class="percent">Stationary<br />Sources</span>
+            </div>
+            <div class="gd-3">
+              <span class="bar" style="margin-left:34px;">
+                <span class="ind grey" data-percent="3">&nbsp;</span>
+              </span>
+              <span class="bar">
+                <span class="ind blue" data-percent="2">&nbsp;</span>
+              </span>
+              <span class="percent">Fugitive<br />Emissions</span>
+            </div>
+            <div class="gd-4">
+              <span class="bar" style="margin-left:34px;">
+                <span class="ind grey" data-percent="32">&nbsp;</span>
+              </span>
+              <span class="bar">
+                <span class="ind blue" data-percent="29">&nbsp;</span>
+              </span>
+              <span class="percent">Purchased<br />Electricity</span>
+            </div>
+            <div class="totals clearfix">
+              <span class="left twenty12">2014 TOTAL CO<sub>2</sub>e<br />
+                <strong class="blue-text">16,159</strong><small class="blue-text"> mtons</small>
+              </span>
+              <span class="right twenty13"> 2013 TOTAL CO<sub>2</sub>e<br /><strong class="grey-text">13,778</strong><small class="grey-text"> mtons</small></span>
+            </div>
+            <div id="circlestats-04">
+                <img id="stats" src="circlestats_04.png" alt="2014 Performance - .28 Pounds C02e Build Dollar - same as last year" />
+            </div>
+            <div id="circlestats-05">
+                <img id="statsNew" src="circlestats_05.png" alt="2020 Goal .21 Pound C02e build dollar" />
+            </div>            
+        </div>
+        <!-- /#graph-3 -->
+    </div>
+    <!-- /#GRAPH -->
+</div> 

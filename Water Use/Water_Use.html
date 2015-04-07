@@ -1,0 +1,271 @@
+<style>
+
+  /* First EOT formats for older browser support */
+  @font-face {
+    font-family: Sero;
+    src: url('../web-fonts/sero/SeroWebPro-Black.eot#hunter');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Sero;
+    src: url('../web-fonts/sero/SeroWebPro-Light.eot#hunter');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  /* Then woff for those that support it */
+  @font-face {
+    font-family: Sero;
+    src: url("../web-fonts/sero/SeroWebPro-Black.woff#hunter") format("woff");
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Sero;
+    src: url("../web-fonts/sero/SeroWebPro-Light.woff#hunter") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  #canvas {
+    margin: 0;
+    padding: 0;
+    font-family: 'sero',arial;
+    color: #3f413c;
+    width: 675px;
+    height: 700px;
+    background: url(state-bg.png) no-repeat;
+    position: relative;
+  }
+
+  #homeoffice {
+    position: absolute;
+    left: 358px !important;
+          top: 500px;
+    display: none;
+  }
+
+  #homeoffice img {
+         width: 50px;
+  }
+
+  #mexico {
+    position: absolute;
+    left: 426px;
+    top: 563px;
+    width: 27px;
+    display: none;
+  }
+
+  .dot_marker {
+    position: absolute;
+    width: 15px;
+    display: none;
+  } 
+
+  #dot1 {left: 188px;top: 295px;}
+  #dot6 {left: 367px;top: 460px;}
+  #dot5 {left: 509px;top: 460px;}
+  #dot2 {left: 403px;top: 556px;}
+  #dot4 {left: 478px;top: 565px;}
+  #dot3 {left: 405px;top: 575px;}
+
+  .labels {
+    font-size: 10px;
+    line-height: 15px;
+    position: absolute;
+    display: none;
+  }
+
+  .gallons {
+    font-size: 12px;
+    line-height: 14px;
+    position: absolute;
+    display: none;
+    color: #2E739D;
+  }
+  .gallons span{color: #3F413C;}
+
+  #label1 {left: 0;top: 294px;}
+  #label2 {left: 86px;top: 553px;}
+  #label3 {left: 207px;top: 638px;}
+  #label4 {left: 553px;top: 564px;}
+  #label5 {left: 550px;top: 458px;}
+  #label6 {left: 504px;top: 369px;}
+
+  #hunterhq {left: 419px;
+  top: 497px;
+  color: #045889;font-weight: bold; font-family: sero; font-size: 12px;}
+  #mexico_label {left: 428px;top: 595px !important;color: #045889; font-weight: bold; font-family: sero; font-size: 12px;}
+  .right-align {text-align: right;}
+  .left-align {text-align: left;}
+  .project-label {font-size: 9px;}
+
+  .h_line {
+    height: 1px;
+    background: #000;
+    position: absolute;
+    display: none;
+  }
+
+  .v_line {
+    width: 1px;
+    background: #000;
+    position: absolute;
+    display: none;
+  }
+
+  #line1 {top: 302px;left: 126px;width: 63px;}
+  #line2 {top: 562px;left: 203px;width: 200px;}
+  #line3x {top: 582px;left: 275px;width: 130px;}
+  #line3y {top: 582px;left: 275px;height: 50px;}
+  #line4 {top: 570px;left: 492px;width: 50px;}
+  #line5 {top: 466px;left: 523px;width: 25px;}
+  #line6x {top: 376px;left: 373px;width: 126px;}
+  #line6y {top: 377px;left: 373px;height: 83px;}
+
+  #stats {
+    left: 300px;
+    top: 100px;
+    position: absolute;
+    width: 260px;
+    display: none;
+  }
+</style>
+
+<script>
+  jQuery( document ).ready(function() {
+
+      jQuery(window).scroll(function(){
+        offset_enter_animate();
+      });
+});
+
+var step = 0;
+var maxStep = 1300;
+
+function animateIt(){
+  step ++;
+  if ( step < maxStep ){
+    var pos = maxStep - step;
+
+    if( step === 50 ){jQuery('#homeoffice').fadeIn('slow');}
+    if( step === 70 ){jQuery('#hunterhq').fadeIn('slow');}
+    if( step === 100 ){jQuery('#mexico').fadeIn('slow');}
+    if( step === 120 ){jQuery('#mexico_label').fadeIn('slow');}
+    
+    if( step === 260 ){jQuery('#dot1').fadeIn('slow');}
+    if( step === 270 ){jQuery('#line1').fadeIn('slow');}
+    if( step === 280 ){jQuery('#label1').fadeIn('slow');}
+    
+    if( step === 260 ){jQuery('#dot5').fadeIn('slow');}
+    if( step === 270 ){jQuery('#line5').fadeIn('slow');}
+    if( step === 280 ){jQuery('#label5').fadeIn('slow');}
+    
+    if( step === 260 ){jQuery('#dot6').fadeIn('slow');}
+    if( step === 270 ){jQuery('#line6y').fadeIn('slow');}
+    if( step === 280 ){jQuery('#line6x').fadeIn('slow');}
+    if( step === 290 ){jQuery('#label6').fadeIn('slow');}
+    
+    if( step === 260 ){jQuery('#dot2').fadeIn('slow');}
+    if( step === 270 ){jQuery('#line2').fadeIn('slow');}
+    if( step === 280 ){jQuery('#label2').fadeIn('slow');}
+    
+    if( step === 320 ){jQuery('#dot3').fadeIn('slow');}
+    if( step === 330 ){jQuery('#line3x').fadeIn('slow');}
+    if( step === 340 ){jQuery('#line3y').fadeIn('slow');}
+    if( step === 350 ){jQuery('#label3').fadeIn('slow');}
+    
+    if( step === 320 ){jQuery('#dot4').fadeIn('slow');}
+    if( step === 330 ){jQuery('#line4').fadeIn('slow');}
+    if( step === 340 ){jQuery('#label4').fadeIn('slow');}
+
+
+    
+    
+    if( step === 425 ){jQuery('#stats').fadeIn('slow');}
+  } else {
+    return;
+  }
+  setTimeout(animateIt, 10);
+}
+
+function offset_enter_animate() {
+  var $this = jQuery('#canvas');
+  var bottom = jQuery(document).height();
+  var windowBottom = bottom - jQuery(document).scrollTop() - jQuery(window).height();
+  var thisBottom = bottom - $this.offset().top;
+
+  if(windowBottom <= thisBottom) {
+    if(!$this.hasClass("done")) {
+      animateIt();
+      $this.addClass("done");
+    }
+  }
+}
+</script>
+
+<div id="canvas">
+  <div id="homeoffice">
+    <img id="homeoffice-image" src="homeoffice.png">
+  </div>
+  <div id="mexico">
+    <img id="mexicooffice-image" src="mexico.png">
+  </div>
+  <div id="dot">
+    <img class="dot_marker" id="dot1" src="dot.png" style="display: inline;">
+  </div>
+  <div id="dot">
+    <img class="dot_marker" id="dot2" src="dot.png" style="display: inline;">
+  </div>
+  <div id="dot">
+    <img class="dot_marker" id="dot3" src="dot.png" style="display: inline;">
+  </div>
+  <div id="dot">
+    <img class="dot_marker" id="dot4" src="dot.png" style="display: inline;">
+  </div>
+  <div id="dot">
+    <img class="dot_marker" id="dot5" src="dot.png" style="display: inline;">
+  </div>
+  <div id="dot">
+    <img class="dot_marker" id="dot6" src="dot.png" style="display: inline;">
+  </div>
+  <div class="labels" id="hunterhq">
+    Hunter<br>Headquarters
+  </div>
+  <div class="labels" id="mexico_label">
+    Mexico<br>Facility
+  </div>
+  <div class="gallons right-align" id="label1">
+    3.3 million gallons<br><span class="project-label">[State Water Project]</span>
+  </div>
+  <div class="gallons right-align" id="label2">
+    2.8 million gallons<br><span class="project-label">[San Diego local water]</span>
+  </div>
+  <div class="gallons right-align" id="label3">
+    257,000 gallons<br><span class="project-label">[Tijuana local water]</span>
+  </div>
+  <div class="gallons" id="label4">
+    5.2 million gallons<br><span class="project-label">[Colorado River]</span>
+  </div>
+  <div class="gallons" id="label5">
+    10.5 million gallons<br><span class="project-label">[Colorado River]</span>
+  </div>
+  <div class="gallons" id="label6">
+    8.2 million gallons<br><span class="project-label">[Hunter Industries Well]</span>
+  </div>
+  <div class="h_line" id="line1">&nbsp;</div>
+  <div class="h_line" id="line2">&nbsp;</div>
+  <div class="h_line" id="line3x">&nbsp;</div>
+  <div class="v_line" id="line3y">&nbsp;</div>
+  <div class="h_line" id="line4">&nbsp;</div>
+  <div class="h_line" id="line5">&nbsp;</div>
+  <div class="h_line" id="line6x">&nbsp;</div>
+  <div class="v_line" id="line6y">&nbsp;</div>
+  <div id="circlestats-03">
+    <img id="stats" src="circlestats_03.png" style="display: inline;">
+  </div>
+</div>

@@ -1,0 +1,336 @@
+<html>
+<head>
+<style>
+  
+  /* First EOT formats for older browser support */
+  @font-face {
+    font-family: Sero;
+    src: url('../web-fonts/sero/SeroWebPro-Black.eot#hunter');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Sero;
+    src: url('../web-fonts/sero/SeroWebPro-Light.eot#hunter');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  /* Then woff for those that support it */
+  @font-face {
+    font-family: Sero;
+    src: url("../web-fonts/sero/SeroWebPro-Black.woff#hunter") format("woff");
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Sero;
+    src: url("../web-fonts/sero/SeroWebPro-Light.woff#hunter") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  a{color: #3f413c;text-decoration:none;}
+
+  #canvas{
+    font-family: 'sero',arial,adelle;
+    color: #3f413c;
+    width: 700px;
+    height: 700px;
+    margin-top: 40px;
+    background-attachment: scroll;
+      background-image: url("employee-canvas.png");
+      background-position: center 190px;
+      background-repeat: no-repeat;
+  }
+  #canvas h1 {margin: 0 auto 20px;width: 670px;font-family: 'sero',arial,adelle;font-size: 3em;font-weight: bolder;text-transform: capitalize;}
+
+  [class*='-square'],[class^='-square']{
+    display: inline-block;
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+  }
+  .blue-square{background:#4DBEEF;}
+  .grey-square{background:#B4B4B3;}
+
+  #canvas .tabs{
+    font-family: 'sero',arial,adelle;
+    font-size: 1.25em;
+    padding: 0;
+    margin: 0 auto;
+    width: 675px;
+  }
+  #canvas .tabs li{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+      background: #D8D8D7;
+      float: left;
+      font-size: 0.75em;
+      list-style-type: none;
+      margin-right: 0.5%;
+      text-align: center;
+      text-transform: uppercase;
+      width: 22%;
+  }
+  #canvas .tabs li.active,#canvas .tabs li:hover{
+    background:#666763; 
+  }
+  #canvas .tabs li:hover a,#canvas .tabs li.active a {color: #ffffff;}
+  #canvas .tabs li a{
+    display: block;
+    padding: 10px 0;
+    color: #3f413c;
+  }
+  #key span{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+      float: left;
+      padding: 43px 0;
+      text-align: center;
+      width: 50%;
+  }
+  [class*='gd-'],[class^='gd-']{
+    height: 55px;
+    margin: 5px;
+  }
+  .gd-2{
+    margin-bottom: 30px;
+  }
+  .percent{
+      float: left;
+      font-family: 'sero',arial,adelle;
+      font-size: 3em;
+      line-height: 1.15em;
+      height: 100%;
+      text-align: right;
+      width: 26%;
+      margin-right: 2%;
+  }
+  .bar {
+      float: left;
+      height: 100%;
+      width: 72%;
+  }
+  .ind {
+      display: block;
+      height: 100%;
+      width:0;
+      -webkit-transition: width 2s ease;
+      -moz-transition: width 2s ease;
+      -o-transition: width 2s ease;
+      -ms-transition: width 2s ease;
+      transition: width 2s ease;
+  }
+  .graph-numbers {
+      margin-left: 160px;
+      margin-top: 40px;
+  }
+  .graph-numbers span{
+    float: left;
+    width: 70px;
+    margin-right: 7px; 
+    text-align: center;
+  }
+  .graph-numbers span:last-child{
+    margin-right: 0;
+  }
+  .totals{
+    font-family: 'sero',arial,adelle;
+    border-top: 2px solid #D8D8D7;
+      margin: 40px auto 0;
+      width: 690px;
+      padding-top: 10px;
+  }
+  .totals span {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+      float: left;
+      width: 50%;
+  }
+  .totals strong{
+    font-family: 'sero',arial,adelle;
+    font-weight: bold;
+    display: block;
+    font-size: 60px;
+    line-height: 50px;
+  }
+  .totals .left{text-align: left;padding-left:30px;}
+  .totals .right{text-align: right;padding-right:30px;}
+
+  .blue{background:#4DBEEF;}
+  .grey{background:#B4B4B3;}
+  .blue-text{color:#4DBEEF;}
+  .grey-text{color:#B4B4B3;}
+  /* clearfix */
+  .clearfix:before,
+  .clearfix:after {content: " ";display: table;}
+  .clearfix:after {clear: both;}
+</style>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script>
+  jQuery(document).scroll(function(){
+    scrollIt();
+  });
+  function scrollIt(){
+    var windowPos = jQuery(window).scrollTop();
+    var canvasPos = jQuery('#canvas').position().top;
+    canvasPos = Math.round(canvasPos);
+    var animated = 0;
+    if( windowPos >= ( canvasPos - 100) ){
+      if( animated >= 0 ){//turned this off
+        jQuery('.ind').each(function(){jQuery(this).css('width',0);});
+        animateIt();
+      }
+      var animated = 1;
+    }
+  }
+  function animateIt(){
+    // alert(x);
+    jQuery('.ind').each(function(){
+      var width = jQuery(this).attr('data-percent');
+      jQuery(this).css('width',width+'%');
+    });
+  }
+
+  function toggleTab(x){
+    jQuery('.ind').css('width',0);  //reset the thermometers
+    jQuery('.tabs li').removeClass('active');
+    jQuery( '.tabs li.tab-'+x ).addClass('active');
+    jQuery('.graph').fadeOut();
+    jQuery('#graph-'+x).delay(900).fadeIn();
+    setTimeout(animateIt, 905);
+  }
+</script>    
+    </head>
+    <body>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus faucibus nisl neque, sed condimentum risus molestie et. In turpis arcu, tempor ut ipsum mattis, tincidunt vehicula orci. Proin neque urna, blandit sit amet eros ac, interdum mattis est. Maecenas porta, sem at posuere volutpat, augue purus blandit erat, et vestibulum eros turpis ut velit. Maecenas pretium, nunc pulvinar facilisis gravida, neque nisl efficitur elit, id ullamcorper nulla justo nec purus. Nam ut fermentum quam. Curabitur luctus interdum justo. Donec porttitor lobortis ornare. Nunc porttitor, sem tempus placerat auctor, urna purus mollis nisl, ut dapibus lorem ligula vel ipsum. Fusce laoreet diam eget sem ultrices molestie. Nulla lacinia, lorem vitae rutrum bibendum, ipsum eros blandit lorem, sit amet vestibulum mauris metus eu purus.</p>
+
+<p>Aenean porta, nulla ut tincidunt porttitor, mauris dolor consectetur neque, sed porttitor est nisl in augue. Aenean eleifend mi elementum ornare bibendum. Suspendisse potenti. Nam scelerisque magna et purus mattis lacinia. Nunc et elit placerat, faucibus mi imperdiet, mollis sem. Morbi non turpis vulputate, rhoncus ante id, auctor dui. Aliquam faucibus placerat mauris, vitae finibus velit tincidunt sed.</p>
+
+<p>Maecenas vel felis vehicula massa vulputate rutrum. Maecenas tincidunt tincidunt felis, ut facilisis turpis rutrum pharetra. Nullam ultrices, odio quis tristique efficitur, justo ipsum imperdiet nisi, vitae ornare ante nisl id lectus. Ut volutpat felis non est rutrum, at convallis nunc blandit. Praesent sit amet orci in elit viverra pulvinar id vitae arcu. Ut nec suscipit leo. Curabitur aliquam turpis a mattis convallis. Nunc eleifend magna id turpis finibus, a pretium velit pharetra. Duis ac euismod metus, id eleifend velit. Pellentesque laoreet tellus ac quam volutpat blandit. Quisque commodo odio sit amet pretium accumsan.</p>
+
+<p>Sed mollis vestibulum tempus. Quisque id turpis non metus varius finibus ac id erat. Nam quis leo felis. Curabitur arcu augue, pellentesque eget justo id, efficitur suscipit magna. Nulla facilisi. Nunc consequat quis massa eu cursus. Donec sed ipsum sem. Quisque sodales eget felis non viverra. In ac pretium arcu. Praesent sed sem lorem. Integer sodales tortor ac velit congue posuere. Vestibulum non aliquam ex. Nunc luctus orci eu est vulputate fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+
+<p>Pellentesque a justo tristique, rutrum nisl vitae, pharetra nisi. Sed luctus fringilla magna sed consequat. Curabitur porta vestibulum risus. Aliquam laoreet erat a euismod tincidunt. Fusce condimentum nisi eget dolor mattis, at pretium metus ornare. Praesent egestas eu libero et vulputate. Cras id dui posuere, mollis velit in, fermentum massa. Vivamus fringilla ipsum quis velit aliquet, non mollis est semper. Curabitur et ante laoreet, sagittis ipsum non, rhoncus lorem. Nunc auctor enim nec rutrum imperdiet.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus faucibus nisl neque, sed condimentum risus molestie et. In turpis arcu, tempor ut ipsum mattis, tincidunt vehicula orci. Proin neque urna, blandit sit amet eros ac, interdum mattis est. Maecenas porta, sem at posuere volutpat, augue purus blandit erat, et vestibulum eros turpis ut velit. Maecenas pretium, nunc pulvinar facilisis gravida, neque nisl efficitur elit, id ullamcorper nulla justo nec purus. Nam ut fermentum quam. Curabitur luctus interdum justo. Donec porttitor lobortis ornare. Nunc porttitor, sem tempus placerat auctor, urna purus mollis nisl, ut dapibus lorem ligula vel ipsum. Fusce laoreet diam eget sem ultrices molestie. Nulla lacinia, lorem vitae rutrum bibendum, ipsum eros blandit lorem, sit amet vestibulum mauris metus eu purus.</p>
+
+<p>Aenean porta, nulla ut tincidunt porttitor, mauris dolor consectetur neque, sed porttitor est nisl in augue. Aenean eleifend mi elementum ornare bibendum. Suspendisse potenti. Nam scelerisque magna et purus mattis lacinia. Nunc et elit placerat, faucibus mi imperdiet, mollis sem. Morbi non turpis vulputate, rhoncus ante id, auctor dui. Aliquam faucibus placerat mauris, vitae finibus velit tincidunt sed.</p>
+
+<p>Maecenas vel felis vehicula massa vulputate rutrum. Maecenas tincidunt tincidunt felis, ut facilisis turpis rutrum pharetra. Nullam ultrices, odio quis tristique efficitur, justo ipsum imperdiet nisi, vitae ornare ante nisl id lectus. Ut volutpat felis non est rutrum, at convallis nunc blandit. Praesent sit amet orci in elit viverra pulvinar id vitae arcu. Ut nec suscipit leo. Curabitur aliquam turpis a mattis convallis. Nunc eleifend magna id turpis finibus, a pretium velit pharetra. Duis ac euismod metus, id eleifend velit. Pellentesque laoreet tellus ac quam volutpat blandit. Quisque commodo odio sit amet pretium accumsan.</p>
+
+<p>Sed mollis vestibulum tempus. Quisque id turpis non metus varius finibus ac id erat. Nam quis leo felis. Curabitur arcu augue, pellentesque eget justo id, efficitur suscipit magna. Nulla facilisi. Nunc consequat quis massa eu cursus. Donec sed ipsum sem. Quisque sodales eget felis non viverra. In ac pretium arcu. Praesent sed sem lorem. Integer sodales tortor ac velit congue posuere. Vestibulum non aliquam ex. Nunc luctus orci eu est vulputate fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+
+<p>Pellentesque a justo tristique, rutrum nisl vitae, pharetra nisi. Sed luctus fringilla magna sed consequat. Curabitur porta vestibulum risus. Aliquam laoreet erat a euismod tincidunt. Fusce condimentum nisi eget dolor mattis, at pretium metus ornare. Praesent egestas eu libero et vulputate. Cras id dui posuere, mollis velit in, fermentum massa. Vivamus fringilla ipsum quis velit aliquet, non mollis est semper. Curabitur et ante laoreet, sagittis ipsum non, rhoncus lorem. Nunc auctor enim nec rutrum imperdiet.</p>        
+
+<div id="canvas">
+    <h1>Who are our Employees?</h1>
+    <ul class="tabs clearfix">
+        <li class="tab-1 active"><a href="javascript:toggleTab(1);">Full-Time Employees</a></li>
+        <li class="tab-2" style="width:32%;"><a href="javascript:toggleTab(2);">At Manager Level or Above</a></li>
+        <li class="tab-3"><a href="javascript:toggleTab(3);">Leadership Team</a></li>
+        <li class="tab-4"><a href="javascript:toggleTab(4);">Board of Directors</a></li>
+    </ul>
+    <div class="clearfix" id="key"><span style="padding-left:150px;"><i class="grey-square">&nbsp;</i>2012</span> <span style="padding-right:150px;"><i class="blue-square">&nbsp;</i>2013</span>
+    </div>
+    <div id="graph">
+        <!-- G1 -->
+        <div class="graph" id="graph-1">
+            <div class="gd-1">
+              <span class="percent grey-text">46%</span> <span class="bar"><span class="ind grey" data-percent="46">&nbsp;</span></span>
+            </div>
+            <div class="gd-2">
+              <span class="percent blue-text">44%</span> <span class="bar"><span class="ind blue" data-percent="44">&nbsp;</span></span>
+            </div>
+            <div class="gd-3">
+              <span class="percent grey-text">54%</span> <span class="bar"><span class="ind grey" data-percent="54">&nbsp;</span></span>
+            </div>
+            <div class="gd-4">
+              <span class="percent blue-text">56%</span> <span class="bar"><span class="ind blue" data-percent="56">&nbsp;</span></span>
+            </div>
+            <div class="graph-numbers clearfix">
+              <span>0</span><span>200</span><span>400</span><span>600</span><span>800</span><span>1000</span><span>1200</span>
+            </div>
+            <div class="totals">
+              <span class="left twenty12">2012 Total<strong class="grey-text">1226</strong></span> <span class="right twenty13">2013 Total<strong class="blue-text">1264</strong></span>
+            </div>
+        </div>
+        <!-- G2 -->
+        <div class="graph" id="graph-2" style="display:none;">
+            <div class="gd-1">
+              <span class="percent grey-text">18%</span> <span class="bar"><span class="ind grey" data-percent="18">&nbsp;</span></span>
+            </div>
+            <div class="gd-2">
+              <span class="percent blue-text">21%</span> <span class="bar"><span class="ind blue" data-percent="21">&nbsp;</span></span>
+            </div>
+            <div class="gd-3">
+              <span class="percent grey-text">82%</span> <span class="bar"><span class="ind grey" data-percent="82">&nbsp;</span></span>
+            </div>
+            <div class="gd-4">
+              <span class="percent blue-text">79%</span> <span class="bar"><span class="ind blue" data-percent="79">&nbsp;</span></span>
+            </div>
+            <div class="graph-numbers clearfix">
+              <span>0</span><span>20</span><span>40</span><span>60</span><span>80</span><span>100</span><span>120</span>
+            </div>
+            <div class="totals">
+              <span class="left twenty12">2012 Total<strong class="grey-text">97</strong></span> <span class="right twenty13">2013 Total<strong class="blue-text">141</strong></span>
+            </div>
+        </div>
+        <!-- G3 -->
+        <div class="graph" id="graph-3" style="display:none;">
+            <div class="gd-1">
+              <span class="percent grey-text">36%</span> <span class="bar"><span class="ind grey" data-percent="36">&nbsp;</span></span>
+            </div>
+            <div class="gd-2">
+              <span class="percent blue-text">36%</span> <span class="bar"><span class="ind blue" data-percent="36">&nbsp;</span></span>
+            </div>
+            <div class="gd-3">
+              <span class="percent grey-text">64%</span> <span class="bar"><span class="ind grey" data-percent="64">&nbsp;</span></span>
+            </div>
+            <div class="gd-4">
+              <span class="percent blue-text">64%</span> <span class="bar"><span class="ind blue" data-percent="64">&nbsp;</span></span>
+            </div>
+            <div class="graph-numbers clearfix">
+              <span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span>
+            </div>
+            <div class="totals">
+              <span class="left twenty12">2012 Total<strong class="grey-text">11</strong></span> <span class="right twenty13">2013 Total<strong class="blue-text">11</strong></span>
+            </div>
+        </div>
+        <!-- G4 -->
+        <div class="graph" id="graph-4" style="display:none;">
+            <div class="gd-1">
+              <span class="percent grey-text">44%</span> <span class="bar"><span class="ind grey" data-percent="44">&nbsp;</span></span>
+            </div>
+            <div class="gd-2">
+              <span class="percent blue-text">44%</span> <span class="bar"><span class="ind blue" data-percent="44">&nbsp;</span></span>
+            </div>
+            <div class="gd-3">
+              <span class="percent grey-text">56%</span> <span class="bar"><span class="ind grey" data-percent="56">&nbsp;</span></span>
+            </div>
+            <div class="gd-4">
+              <span class="percent blue-text">56%</span> <span class="bar"><span class="ind blue" data-percent="56">&nbsp;</span></span>
+            </div>
+            <div class="graph-numbers clearfix">
+              <span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span>
+            </div>
+            <div class="totals">
+              <span class="left twenty12">2012 Total<strong class="grey-text">9</strong></span> <span class="right twenty13">2013 Total<strong class="blue-text">9</strong></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body></html>
