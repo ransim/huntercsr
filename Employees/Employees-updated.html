@@ -181,6 +181,7 @@
 </style>
 
 <script>
+    
   jQuery(document).scroll(function(){
     scrollIt();
   });
@@ -188,9 +189,9 @@
     var windowPos = jQuery(window).scrollTop();
     var canvasPos = jQuery('#canvas').position().top;
     canvasPos = Math.round(canvasPos);
-    var animated = 0;
-    if( windowPos >= ( canvasPos - 100) ){
-      if( animated >= 0 ){//turned this off
+    var animated = 0;    
+    if( windowPos >= ( canvasPos - 500) ){
+      if( animated >= 0 ){
         jQuery('.ind').each(function(){jQuery(this).css('width',0);});
         animateIt();
       }
@@ -198,7 +199,7 @@
     }
   }
   function animateIt(){
-    // alert(x);
+
     jQuery('.ind').each(function(){
       var width = jQuery(this).attr('data-percent');
       jQuery(this).css('width',width+'%');
@@ -224,7 +225,9 @@
     
 <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut bibendum vulputate tincidunt. Etiam ut arcu metus. Aenean hendrerit felis et diam pharetra, non eleifend diam fermentum. Pellentesque eget aliquam orci, nec tempus arcu. Aenean condimentum ligula eget tortor cursus ullamcorper. Duis sit amet pharetra sapien, quis sagittis erat. Duis tempor turpis a consectetur varius. Morbi nec orci suscipit risus vulputate condimentum.</p>
 
-<p>Quisque maximus, nunc gravida tristique dignissim, dui risus tristique metus, vel aliquam ex augue id diam. Etiam interdum, ante at gravida consequat, magna nunc sodales felis, a lobortis neque nisi ut sem. Mauris sed tempor justo. Sed auctor felis vitae felis ultricies sagittis. Quisque rutrum vehicula maximus. Maecenas et lectus mollis, malesuada magna eget, venenatis lorem. Praesent accumsan justo eu mattis commodo. Aenean placerat risus eget mi molestie consequat.</p>    
+<p>Quisque maximus, nunc gravida tristique dignissim, dui risus tristique metus, vel aliquam ex augue id diam. Etiam interdum, ante at gravida consequat, magna nunc sodales felis, a lobortis neque nisi ut sem. Mauris sed tempor justo. Sed auctor felis vitae felis ultricies sagittis. Quisque rutrum vehicula maximus. Maecenas et lectus mollis, malesuada magna eget, venenatis lorem. Praesent accumsan justo eu mattis commodo. Aenean placerat risus eget mi molestie consequat.</p>   
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus magna lacus. Sed sed ex et turpis cursus maximus non eu turpis. Fusce tincidunt leo ac ligula finibus, sit amet interdum justo suscipit. Morbi blandit mauris id ipsum ultrices gravida. Duis sed luctus lacus, aliquet molestie lectus. Donec tempor, sem in luctus rhoncus, nibh magna dictum dolor, quis elementum dui dui et turpis. Proin sed lectus bibendum, posuere urna nec, semper elit. Aliquam elementum odio nunc, ut euismod ligula aliquam sed. Maecenas in nisl et elit imperdiet ornare. Donec volutpat, dui a rutrum ultricies, turpis magna dictum augue, id facilisis diam elit vitae tellus. Quisque convallis ante vel maximus consequat. Nulla lectus lectus, fringilla ut dignissim a, accumsan non diam. Praesent lacus tortor, consequat et ex at, dictum mattis ex.</p>
+   
 <div id="canvas">
     <h1>Our Employees</h1>
     <ul class="tabs clearfix">
