@@ -60,10 +60,11 @@
 
   #canvas .tabs{
     font-family: 'sero',arial,adelle;
-    font-size: 1.25em;
+    font-size: 1.10em;
     padding: 0;
     margin: 0 auto;
     width: 675px;
+    line-height:1.35em;
   }
   #canvas .tabs li{
     -webkit-box-sizing: border-box;
@@ -100,6 +101,9 @@
       text-align: center;
       width: 50%;
   }
+#key span:first-child {
+text-align:right;
+}    
   [class*='gd-'],[class^='gd-']{
     height: 55px;
     margin: 5px;
@@ -158,7 +162,7 @@
     -ms-box-sizing: border-box;
     box-sizing: border-box;
       float: left;
-      width: 50%;
+      width: 25%;
   }
   .totals strong{
     font-family: 'sero',arial,adelle;
@@ -168,7 +172,7 @@
     line-height: 50px;
   }
   .totals .left{text-align: left;padding-left:30px;}
-  .totals .right{text-align: right;padding-right:30px;}
+  .totals .right{float:right; text-align: left;padding-right:30px;}
 
   .blue{background:#4DBEEF;}
   .grey{background:#B4B4B3;}
@@ -231,10 +235,10 @@
 <div id="canvas">
     <h1>Our Employees</h1>
     <ul class="tabs clearfix">
-        <li class="tab-1 active"><a href="javascript:toggleTab(1);">Full-Time<br />Employees</a></li>
-        <li class="tab-2" style="width:32%;"><a href="javascript:toggleTab(2);">At Manager Level<br />or Above</a></li>
-        <li class="tab-3"><a href="javascript:toggleTab(3);">Leadership<br />Team</a></li>
-        <li class="tab-4"><a href="javascript:toggleTab(4);">Board of<br />Directors</a></li>
+        <li class="tab-1 active"><a href="javascript:toggleTab(1);">Full-Time Employees</a></li>
+        <li class="tab-2" style="width:32%;"><a href="javascript:toggleTab(2);">At Manager Level or Above</a></li>
+        <li class="tab-3"><a href="javascript:toggleTab(3);">Leadership Team</a></li>
+        <li class="tab-4"><a href="javascript:toggleTab(4);">Board of Directors</a></li>
     </ul>
     <div class="clearfix" id="key"><span><i class="blue-square">&nbsp;</i>2014</span> <span style="padding-right:150px;"><i class="grey-square">&nbsp;</i>2013</span>
     </div>

@@ -122,9 +122,11 @@
       font-family: 'sero',arial,adelle;
       font-size: 15px;
       margin-top: 10px;
-      text-align: center;
+      text-align: left;
+      margin-left:0px;
       width: 100%;
   }
+#graph-3 .percent {margin-left:30px;}        
   .bar {
     position: relative;
       float: left;
@@ -149,7 +151,7 @@
   .graph-numbers {
     float: left;
       height: 440px;
-      /*margin-top: 29px;*/
+      margin-top: 29px;
       margin-right: 45px;
       width: 90px;
   }
@@ -158,7 +160,7 @@
       margin-right: 7px;
       text-align: right;
       width: 90px;
-      margin-top: 45px;
+      margin-top: 50px;
   }
   .graph-numbers span:first-child{margin-top: 0;}
   .graph-numbers span:last-child{margin-top: 55px;}
@@ -180,11 +182,12 @@
       float: left;
       width: 50%;
   }
-  .totals strong,.totals small{font-family: 'sero',arial,adelle; font-weight: bold;}
+  .totals strong{font-family: 'sero',arial,adelle; font-weight: bold;}
+        .totals small{font-family: 'sero',arial,adelle;}
   .totals strong{font-size: 60px;line-height: 70px;}
   #graph-3 .totals strong{font-size: 50px;}
   .totals .left{text-align: left;padding-left:30px;}
-  .totals .right{text-align: right;padding-right:30px;}
+  .totals .right{text-align: left;padding-left:30px;padding-right:0px;}
 
   [id*='scope-'],[id^='scope-']{
     position: absolute;
@@ -194,10 +197,10 @@
     text-align: left;
     color: #939491;
   }
-  #scope-1{ left: 150px; width: 390px; top:358px}
-  #scope-2{ left: 558px; width: 130px; top:278px;}
+  #scope-1{ left: 150px; width: 390px; top:372px}
+  #scope-2{ left: 558px; width: 130px; top:302px;}
   #scope-3{ left: 220px; width: 450px; top:170px;}
-  #scope-4{ left: 130px; width: 80px; top:-8px; }        
+  #scope-4{ left: 130px; width: 80px; top:28px; }        
   [id*='scope-'] .outline,[id^='scope-'] .outline{
     display: block;
     position: relative;
@@ -209,17 +212,20 @@
   [id*='scope-'] .outline:after,[id^='scope-'] .outline:after{
     position: absolute;
     content: '';
-    top: 0px;
+    top: -20px;
     left: 50%;
-    width: 0px;
-    height: 30px;
+    width: 1px;
+    height: 20px;
     background-color: #E2E2E1;
   }
   #scope-1 .outline{ height:70px;}
   #scope-2 .outline{ }
   #scope-3 .outline{height:258px; }
   #scope-4 .outline{ height:415px;} 
-        .scope-label{font-size:10px;font-weight:bold;}
+        .scope-label{font-size:10px;font-weight:bold; position:absolute; top:-38px;width:400px;}
+#scope-1 .scope-label {width:400px;text-align:center;}          
+#scope-4 .scope-label {width:200px;margin-left:20px;}  
+        #scope-3 .scope-label {width:200px;margin-left:200px;}        
   .blue{background:#4DBEEF;}
   .grey{background:#B4B4B3;}
   .blue-text{color:#4DBEEF;}
@@ -474,9 +480,9 @@
             </div>
             <div class="totals clearfix">
               <span class="left twenty12">2014 TOTAL CO<sub>2</sub>e<br />
-                <strong class="blue-text">16,159</strong><small class="blue-text"> mtons</small>
+                <strong class="blue-text">16,159</strong><small class="blue-text"> Metric Tons</small>
               </span>
-              <span class="right twenty13"> 2013 TOTAL CO<sub>2</sub>e<br /><strong class="grey-text">13,778</strong><small class="grey-text"> mtons</small></span>
+              <span class="right twenty13"> 2013 TOTAL CO<sub>2</sub>e<br /><strong class="grey-text">13,778</strong><small class="grey-text"> Metric Tons</small></span>
             </div>
             <div id="circlestats-04">
                 <img id="stats" src="circlestats_04.png" alt="2014 Performance - .28 Pounds C02e Build Dollar - same as last year" />

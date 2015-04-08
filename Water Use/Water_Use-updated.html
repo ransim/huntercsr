@@ -46,8 +46,8 @@
 
   #homeoffice {
     position: absolute;
-    left: 358px !important;
-          top: 480px;
+    left: 338px !important;
+          top: 460px;
     display: none;
   }
 
@@ -70,7 +70,7 @@
   } 
 
   #dot1 {left: 188px;top: 295px;}
-  #dot6 {left: 367px;top: 460px;}
+  #dot6 {left: 377px;top: 480px;}
   #dot5 {left: 509px;top: 460px;}
   #dot2 {left: 403px;top: 556px;}
   #dot4 {left: 478px;top: 565px;}
@@ -84,12 +84,11 @@
   }
 
   .gallons {
-    font-size: 16px;
+    font-size: 22px;
     line-height: 18px;
     position: absolute;
     display: none;
     color: #2E739D;
-      font-weight:bold;
   }
   .gallons span{color: #3F413C;}
 
@@ -98,15 +97,15 @@
   #label3 {left: 207px;top: 638px;}
   #label4 {left: 553px;top: 564px;}
   #label5 {left: 550px;top: 458px;}
-  #label6 {left: 86px;top: 369px;}
+  #label6 {left: 86px;top: 450px;}
 
-  #hunterhq {left: 320px;
-  top: 500px;
-  color: #045889;font-weight: bold; font-family: sero; font-size: 12px; text-align:right;}
+  #hunterhq {left: 330px;
+  top: 430px;
+  color: #045889;font-weight: bold; font-family: sero; font-size: 12px; text-align:left;}
   #mexico_label {left: 428px;top: 595px !important;color: #045889; font-weight: bold; font-family: sero; font-size: 12px;}
   .right-align {text-align: right;}
   .left-align {text-align: left;}
-  .project-label {font-size: 9px; font-weight:normal;}
+  .project-label {font-size:11px; font-weight:normal;}
 
   .h_line {
     height: 1px;
@@ -122,25 +121,25 @@
     display: none;
   }
 
-  #line1 {top: 302px;left: 126px;width: 63px;}
+  #line1 {top: 302px;left: 36px;width: 153px;}
   #line2 {top: 562px;left: 203px;width: 200px;}
   #line3x {top: 582px;left: 275px;width: 130px;}
   #line3y {top: 582px;left: 275px;height: 50px;}
   #line4 {top: 570px;left: 492px;width: 50px;}
   #line5 {top: 466px;left: 523px;width: 25px;}
-  #line6x {top: 376px;left: 138px;width: 236px;}
+  #line6x {top: 487px;left: 143px;width: 236px;}
   #line6y {top: 377px;left: 373px;height: 83px;}
 
   #stats {
-    left: 300px;
-    top: 100px;
+    left: 230px;
+    top: 140px;
     position: absolute;
     width: 260px;
     display: none;
       z-index: 0;
   }
   #statsNew {
-    left: 520px;
+    left: 430px;
     top: 50px;
     position: absolute;
     width: 230px;
@@ -264,7 +263,7 @@ function offset_enter_animate() {
   <div class="labels" id="mexico_label">
     Mexico<br>Facility
   </div>
-  <div class="gallons right-align" id="label1">
+  <div class="gallons left-align" id="label1">
     9%<br><span class="project-label">[State Water Project]</span>
   </div>
   <div class="gallons right-align" id="label2">
@@ -289,7 +288,7 @@ function offset_enter_animate() {
   <div class="h_line" id="line4">&nbsp;</div>
   <div class="h_line" id="line5">&nbsp;</div>
   <div class="h_line" id="line6x">&nbsp;</div>
-  <div class="v_line" id="line6y">&nbsp;</div>
+  <!--<div class="v_line" id="line6y">&nbsp;</div>-->
   <div id="circlestats-04">
     <img id="stats" src="circlestats_04.png" alt="33.1 Million gallons of water used in 2014, 6% increase from 2013">
   </div>
