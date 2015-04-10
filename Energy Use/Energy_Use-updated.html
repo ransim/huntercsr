@@ -50,13 +50,13 @@
       background-repeat: no-repeat;
       height: 900px;
       width: 700px;
-      margin-top: 40px;
+      margin-top: 10px;
   }
   #canvas h1{font-family: 'sero',arial,adelle;font-size: 3em;font-weight: bolder;text-transform: capitalize;
     width: 690px; margin: 0 auto 40px ;   
   }
 
-  #graph{position: relative;}
+  #graph{position: relative; top:-16px;}
 
   [class*='-square'],[class^='-square']{
     display: inline-block;
@@ -88,6 +88,7 @@
       text-align: center;
       text-transform: uppercase;
       width: 32.33%;
+      letter-spacing: -.04em;
   }
   #canvas .tabs li.active,#canvas .tabs li:hover{
     background:#666763; 
@@ -99,8 +100,8 @@
     padding: 15px 0;
     color: #3f413c;
   }
-  #key {padding: 20px 10px 0;}
-  #key span{display:block;text-align: right;}
+  #key {position:relative; top:30px; right:30px;}
+  #key span{display:block;text-align: right; padding-top:10px;}
 
   [class*='gd-'],[class^='gd-']{
     /*background-color: rgba(255, 255, 0, 0.1);*/
@@ -123,11 +124,12 @@
       float: left;
       font-family: 'sero',arial,adelle;
       font-size: 15px;
-      margin-top: 10px;
+      margin-top: 20px;
       text-align: left;
       margin-left:0px;
       width: 100%;
   }
+#graph-2 .percent {letter-spacing: -0.03em;}        
 #graph-3 .percent {margin-left:30px;}        
   .bar {
     position: relative;
@@ -153,9 +155,10 @@
   .graph-numbers {
     float: left;
       height: 440px;
-      margin-top: 29px;
+      margin-top: 20px;
       margin-right: 45px;
       width: 90px;
+      margin-left:-10px;
   }
   .graph-numbers span{
     display: block;
@@ -175,6 +178,7 @@
     border-top: 2px solid #E2E2E1;
       margin: 60px auto 0;
       padding-top: 10px;
+      color:#3f413c; 
   }
   .totals span {
     -webkit-box-sizing: border-box;
@@ -185,11 +189,12 @@
       width: 50%;
   }
   .totals strong{font-family: 'sero',arial,adelle; font-weight: bold;}
-        .totals small{font-family: 'sero',arial,adelle;}
-  .totals strong{font-size: 60px;line-height: 70px;}
-  #graph-3 .totals strong{font-size: 50px;}
-  .totals .left{text-align: left;padding-left:30px;}
-  .totals .right{text-align: left;padding-left:30px;padding-right:0px;}
+        .totals small{font-family: 'sero',arial,adelle; font-size:24px;}
+  .totals strong{font-size: 60px;line-height: 70px; padding-right:10px;}
+  #graph-3 .totals strong{font-size: 41pt;}
+
+  .totals .left{text-align: left;padding-left:30px; padding-top:20px;}
+  .totals .right{text-align: left;padding-left:30px;padding-right:0px; padding-top:20px;}
 
   [id*='scope-'],[id^='scope-']{
     position: absolute;
@@ -197,7 +202,7 @@
     display: block;
     height: 160px;
     text-align: left;
-    color: #939491;
+    color: #939592;
   }
   #scope-1{ left: 150px; width: 390px; top:372px}
   #scope-2{ left: 558px; width: 130px; top:302px;}
@@ -224,14 +229,15 @@
   #scope-2 .outline{ }
   #scope-3 .outline{height:258px; }
   #scope-4 .outline{ height:415px;} 
-        .scope-label{font-size:10px;font-weight:bold; position:absolute; top:-38px;width:400px;}
+        .scope-label{font-family:sero,arial,adelle;font-size:10pt;font-weight:bold; position:absolute; top:-38px;width:400px;}
 #scope-1 .scope-label {width:400px;text-align:center;}          
-#scope-4 .scope-label {width:200px;margin-left:20px;}  
-        #scope-3 .scope-label {width:200px;margin-left:200px;}        
+#scope-2 .scope-label {top:-50px; left:-10px;}         
+#scope-4 .scope-label {width:200px;margin-left:20px; top:-48px;}  
+        #scope-3 .scope-label {width:300px;margin-left:200px; top:-48px;}        
   .blue{background:#4DBEEF;}
-  .grey{background:#B4B4B3;}
+  .grey{background:#b2b3b1;}
   .blue-text{color:#4DBEEF;}
-  .grey-text{color:#B4B4B3;}
+  .grey-text{color:#b2b3b1;}
   /* clearfix */
   .clearfix:before,.clearfix:after { content: ""; display: table; }
   .clearfix:after { clear: both; }
@@ -324,7 +330,7 @@
               <span>15000</span>
               <span>10000</span>
               <span>5000</span>
-              <span>MWh 0</span>
+              <span style="padding-top:10px;">MWh 0</span>
             </div>
             <span id="scope-3">
                 <span class="scope-label">Scope 1 - Primary Energy Consumption</span><span class="outline">&nbsp;</span>
@@ -404,7 +410,7 @@
               <span>15000</span>
               <span>10000</span>
               <span>5000</span>
-              <span>MWh 0</span>
+              <span style="padding-top:10px;">MWh 0</span>
             </div>
             <div class="gd-1">
               <span class="bar" style="margin-left:100px;">
@@ -438,7 +444,7 @@
               <span>15000</span>
               <span>10000</span>
               <span>5000</span>
-              <span>mtons 0</span>
+              <span>0<br />Metric Tons </span>
             </div>
             <span id="scope-1">
               <span class="scope-label">Scope 1 - Emissions from Primary Energy Consumption</span><span class="outline">&nbsp;</span>
