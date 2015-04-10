@@ -32,14 +32,16 @@
     font-weight: normal;
     font-style: normal;
   }
-  body { width:900px; font-family:sero;} 
+  body { font-family:sero; background:#333;}  
+    .content {width:760px; margin: 0 auto; background:#fff;}
+    .csr-container {width:575px; margin:0 40px;}
   #canvas {
     margin: 0;
     padding: 0;
     font-family: 'sero',arial;
     color: #3f413c;
     width: 675px;
-    height: 700px;
+    height: 800px;
     background: url(state-bg-new.png) no-repeat;
     position: relative;
   }
@@ -92,12 +94,12 @@
   }
   .gallons span{color: #3F413C;}
 
-  #label1 {left: 0;top: 294px;}
-  #label2 {left: 86px;top: 553px;}
-  #label3 {left: 207px;top: 638px;}
-  #label4 {left: 553px;top: 564px;}
-  #label5 {left: 550px;top: 458px;}
-  #label6 {left: 86px;top: 450px;}
+  #label1 {left: 5px;top: 274px;}
+  #label2 {left: 86px;top: 533px;}
+  #label3 {left: 207px;top: 618px;}
+  #label4 {left: 553px;top: 544px;}
+  #label5 {left: 550px;top: 440px;}
+  #label6 {left: 16px;top: 460px;}
 
   #hunterhq {left: 330px;
   top: 430px;
@@ -121,7 +123,7 @@
     display: none;
   }
 
-  #line1 {top: 302px;left: 36px;width: 153px;}
+  #line1 {top: 302px;left: 112px;width: 76px;}
   #line2 {top: 562px;left: 203px;width: 200px;}
   #line3x {top: 582px;left: 275px;width: 130px;}
   #line3y {top: 582px;left: 275px;height: 50px;}
@@ -221,7 +223,10 @@ function offset_enter_animate() {
 }
 </script>
 </head>
-<body>  
+<body> 
+<div class="content">
+    <div class="csr-container">
+
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus magna lacus. Sed sed ex et turpis cursus maximus non eu turpis. Fusce tincidunt leo ac ligula finibus, sit amet interdum justo suscipit. Morbi blandit mauris id ipsum ultrices gravida. Duis sed luctus lacus, aliquet molestie lectus. Donec tempor, sem in luctus rhoncus, nibh magna dictum dolor, quis elementum dui dui et turpis. Proin sed lectus bibendum, posuere urna nec, semper elit. Aliquam elementum odio nunc, ut euismod ligula aliquam sed. Maecenas in nisl et elit imperdiet ornare. Donec volutpat, dui a rutrum ultricies, turpis magna dictum augue, id facilisis diam elit vitae tellus. Quisque convallis ante vel maximus consequat. Nulla lectus lectus, fringilla ut dignissim a, accumsan non diam. Praesent lacus tortor, consequat et ex at, dictum mattis ex.</p>
 
 <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut bibendum vulputate tincidunt. Etiam ut arcu metus. Aenean hendrerit felis et diam pharetra, non eleifend diam fermentum. Pellentesque eget aliquam orci, nec tempus arcu. Aenean condimentum ligula eget tortor cursus ullamcorper. Duis sit amet pharetra sapien, quis sagittis erat. Duis tempor turpis a consectetur varius. Morbi nec orci suscipit risus vulputate condimentum.</p>
@@ -266,10 +271,10 @@ function offset_enter_animate() {
   <div class="gallons left-align" id="label1">
     9%<br><span class="project-label">[State Water Project]</span>
   </div>
-  <div class="gallons right-align" id="label2">
+  <div class="gallons left-align" id="label2">
     8%<br><span class="project-label">[San Diego local water]</span>
   </div>
-  <div class="gallons right-align" id="label3">
+  <div class="gallons left-align" id="label3">
    1%<br><span class="project-label">[Tijuana local water]</span>
   </div>
   <div class="gallons" id="label4">
@@ -296,5 +301,7 @@ function offset_enter_animate() {
     <img id="statsNew" src="circlestats_05.png" alt="2020 Goal - 15% reduction from 2014">
   </div>    
 </div>
+    </div>
+</div>        
 </body>
 </html>
