@@ -107,10 +107,13 @@
     /*background-color: rgba(255, 255, 0, 0.1);*/
       float: left;
       height: 410px;
-      margin-right: 10px;
+      margin-right: 5px;
       margin-top: 31px;
       width: 80px;
   }
+  #graph-1 [class*='gd-'], #graph-1 [class^='gd-']{
+margin-left:5px;
+  }        
   #graph-2 [class*='gd-'], #graph-2 [class^='gd-']{
     width: 40%;
     margin-right: 0;
@@ -155,7 +158,7 @@
   .graph-numbers {
     float: left;
       height: 440px;
-      margin-top: 20px;
+      margin-top: 27px;
       margin-right: 45px;
       width: 90px;
       margin-left:-10px;
@@ -164,11 +167,13 @@
     display: block;
       margin-right: 7px;
       text-align: right;
-      width: 90px;
+      /*width: 90px;*/
       margin-top: 50px;
   }
   .graph-numbers span:first-child{margin-top: 0;}
-  .graph-numbers span:last-child{margin-top: 55px;}
+  .graph-numbers span:last-child{margin-top: 60px;}
+.stackedLabel { float:left; text-align:right; width:53px; margin-top:-10px;}
+        
 
   .totals{
     float: left;
@@ -227,12 +232,12 @@
   }
   #scope-1 .outline{ height:70px;}
   #scope-2 .outline{ }
-  #scope-3 .outline{height:258px; left:-10px; }
-  #scope-4 .outline{ height:415px; left:-10px;} 
+  #scope-3 .outline{height:268px; left:-10px; }
+  #scope-4 .outline{ height:412px; left:-5px;} 
         .scope-label{font-family:sero,arial,adelle;font-size:10pt;font-weight:bold; position:absolute; top:-38px;width:400px;}
 #scope-1 .scope-label {width:400px;text-align:center;}          
 #scope-2 .scope-label {top:-50px; left:-10px;}         
-#scope-4 .scope-label {width:200px;margin-left:20px; top:-48px;}  
+#scope-4 .scope-label {width:200px;margin-left:0px; top:-48px;}  
         #scope-3 .scope-label {width:300px;margin-left:200px; top:-48px;}        
   .blue{background:#4DBEEF;}
   .grey{background:#b2b3b1;}
@@ -257,7 +262,8 @@
     width: 180px;
     display: none;
       z-index:1;
-  }        
+  }
+
 </style>
 
 <script>
@@ -330,7 +336,7 @@
               <span>15000</span>
               <span>10000</span>
               <span>5000</span>
-              <span style="padding-top:10px;">MWh 0</span>
+              <span>MWh 0</span>
             </div>
             <span id="scope-3">
                 <span class="scope-label">Scope 1 - Primary Energy Consumption</span><span class="outline">&nbsp;</span>
@@ -410,7 +416,7 @@
               <span>15000</span>
               <span>10000</span>
               <span>5000</span>
-              <span style="padding-top:10px;">MWh 0</span>
+              <span>MWh 0</span>
             </div>
             <div class="gd-1">
               <span class="bar" style="margin-left:100px;">
@@ -444,7 +450,7 @@
               <span>15000</span>
               <span>10000</span>
               <span>5000</span>
-              <span>0<br />Metric Tons </span>
+              <span><div class="stackedLabel">Metric<br />Tons</div>0</span>
             </div>
             <span id="scope-1">
               <span class="scope-label">Scope 1 - Emissions from Primary Energy Consumption</span><span class="outline">&nbsp;</span>
